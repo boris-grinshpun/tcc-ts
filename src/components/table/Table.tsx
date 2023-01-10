@@ -1,11 +1,11 @@
 import './table.scss'
 import { FC } from 'react'
-import { CharCard } from '../../interfaces'
-interface Tableprops {
+// import { CharCard } from '../../interfaces'
+interface TableFC {
     card: CharCard
 }
 
-export const Table: FC<Tableprops> = (props) => {
+export const Table: FC<TableFC> = ({card}) => {
     const {
         name = "",
         image = "",
@@ -15,7 +15,7 @@ export const Table: FC<Tableprops> = (props) => {
         characterLocation = "",
         dimension = " ",
         appearances: populatiry = ""
-    } = props.card
+    } = card
     return (
         <div className="table-wrapper">
             <div className="image">

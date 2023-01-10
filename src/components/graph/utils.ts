@@ -1,12 +1,4 @@
 import {
-    Character,
-    CharacterAppearances,
-    CharNameIdsHash,
-    Graph,
-    Episode
-} from '../../interfaces'
-
-import {
     calcCharAppearanceInEpisodes,
     graphCharacters
 } from '../../shared-utils'
@@ -15,6 +7,7 @@ export async function prepGraphData(
     allCharacters: Character[],
     allEpisodes: Episode[]
 ): Promise<Graph[]> {
+    let result: Promise<Graph[]>
     try {
         let graphCharactersData: CharNameIdsHash = allCharacters.reduce((acc: any, character: any) => {
             let characterName = character.name
@@ -47,10 +40,11 @@ export async function prepGraphData(
             }, 0)
             prepGraphData.push({ name, totalAppearances })
         }
-        return new Promise(resolve => resolve(prepGraphData))
+        result = new Promise(resolve => resolve(prepGraphData))
     } catch (err) {
-        return new Promise((resolve, reject) => {
+        result = new Promise((resolve, reject) => {
             reject(err)
         })
     }
+    return result
 }

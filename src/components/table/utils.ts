@@ -1,11 +1,3 @@
-import { 
-  Character,
-  CharacterAppearances,
-  LocationData,
-  CharCard,
-  Location,
-  Episode 
-} from '../../interfaces'
 import {
   calcCharAppearanceInEpisodes,
   sortByKey,
@@ -21,8 +13,8 @@ export async function prepTableData(
         allLocations: Location[],
         charAppearanceInEpisodes: CharacterAppearances,
         allEpisodes: Episode[]
-    ): Promise<CharCard|any> {
-
+    ): Promise<CharCard> {
+   let result: Promise<CharCard>
     try {
       const earthLocation: any = allLocations.find((location: Location) => location.name === earthVal) ?? []
       const residentsIds: number[] = earthLocation?.residents.map((resident: String) => {
@@ -70,7 +62,7 @@ export async function prepTableData(
 
       const [characterId, characterCardInit]: [string, CharCard] = Object.entries(allMinAppearances[0])[0]
       
-      const result: Promise<CharCard> = new Promise((resolve)=>{
+      result = new Promise((resolve)=>{
           getLocation(characterId)
             .then((data: LocationData) => {
               characterCardInit.dimension = data.dimension
@@ -79,8 +71,9 @@ export async function prepTableData(
     
       })
     } catch (err) {
-      return new Promise((resolve, reject)=>{
+        result = new Promise((resolve, reject)=>{
         reject(err)
       })
     }
+    return result
   }

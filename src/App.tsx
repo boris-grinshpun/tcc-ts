@@ -4,7 +4,6 @@ import { Table } from './components/table/Table'
 import { prepTableData } from './components/table/utils'
 import { prepGraphData } from './components/graph/utils'
 import { characterGetAll, locationGetAll, episodeGetAll } from './api'
-import { Character, CharacterAppearances, CharCard, Graph, Location, Episode } from './interfaces'
 
 function App() {
   let allCharacters: Character[],
@@ -33,10 +32,15 @@ function App() {
         allEpisodes = data[0]
         allLocations = data[1]
         allCharacters = data[2]
-        prepTableData(earthCharacters, allLocations, charAppearanceInEpisodes, allEpisodes).then((data: CharCard)=>{
+        prepTableData(
+          earthCharacters,
+          allLocations,
+          charAppearanceInEpisodes,
+          allEpisodes
+        ).then((data: CharCard) => {
           setCharacterCard(data)
         })
-        prepGraphData(allCharacters, allEpisodes).then((data: Graph[])=>{
+        prepGraphData(allCharacters, allEpisodes).then((data: Graph[]) => {
           setGraphData(data)
         })
       } catch (err) {
@@ -48,7 +52,7 @@ function App() {
   return (
     <div className="App">
       <div><Table card={characterCard} /></div>
-      <br/>
+      <br />
       <div><ColumnGraph data={graphData} /></div>
     </div>
   )

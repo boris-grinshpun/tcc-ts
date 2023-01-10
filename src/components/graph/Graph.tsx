@@ -7,11 +7,11 @@ interface Row {
     name: string
 
 }
-interface Graph {
+interface GraphFC {
     data: Row[]
 }
 
-export const ColumnGraph: FC<Graph> = ({data}) => {
+export const ColumnGraph: FC<GraphFC> = ({data}) => {
     const graphHeight = 200
 
     const maxValue: number = Math.max(...data.map(row => row.totalAppearances))
