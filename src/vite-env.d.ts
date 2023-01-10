@@ -31,7 +31,7 @@
   }
   
  interface CharNameIdsHash {
-    [key: string] : {
+    [name: string] : {
       ids: [],
     }
   }
