@@ -1,6 +1,5 @@
 import './table.scss'
 import { FC } from 'react'
-// import { CharCard } from '../../interfaces'
 interface TableFC {
     card: CharCard
 }
