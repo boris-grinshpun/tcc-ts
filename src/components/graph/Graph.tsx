@@ -1,5 +1,5 @@
 import './graph.scss'
-import { randomColor } from '../../shared-utils'
+import { getColor, graphCharacters } from './utils'
 import { FC } from 'react'
 
 interface Row {
@@ -33,7 +33,7 @@ export const ColumnGraph: FC<GraphFC> = ({data}) => {
         const columnHeight = Math.floor((row.totalAppearances * graphHeight) / maxValue)
         return (
             <div className='x-legend-wrapper' key={index + row.name}>
-                <div className="column" style={{ height: columnHeight + 'px', backgroundColor: '#' + randomColor() }}>
+                <div className="column" style={{ height: columnHeight + 'px', backgroundColor: getColor(index) }}>
                 </div>
                 <div className="x-legend-item">{row.name}</div>
             </div>

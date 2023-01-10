@@ -1,6 +1,5 @@
 import {
-    calcCharAppearanceInEpisodes,
-    graphCharacters
+    calcCharAppearanceInEpisodes
 } from '../../shared-utils'
 
 export async function prepGraphData(
@@ -48,3 +47,10 @@ export async function prepGraphData(
     }
     return result
 }
+
+const colors = ["#fff2cb", "#daf7d0", "#cde8ed", "#ffc6df", "#ffe2c5"]
+
+export function getColor(index: number):string {
+  return colors[index]
+}
+export const graphCharacters: string[] = ["Abradolf Lincler", "Arcade Alien", "Morty Smith", "Birdperson", "Mr. Meeseeks"]

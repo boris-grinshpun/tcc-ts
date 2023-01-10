@@ -1,14 +1,16 @@
 
 .wrapper {
     background-color: white;
-    border: 1px solid black;
+    // border: 1px solid black;
     margin: 0 auto;
     padding: 30px;
+    border-radius: 1.5em;
 
     .title {
-        font-weight: bold;
-        font-size: 1.5em;
+        font-weight: 300;
+        font-size: 1em;
         margin-bottom: 70px;
+        color: #444444
     }
     .graph {
         display: flex;
@@ -38,7 +40,7 @@
                         width: 1.5em;
                     }
                     .line{
-                        background: repeating-linear-gradient(to top, grey, grey 2px);
+                        background: repeating-linear-gradient(to top, #f8f8f8, #c7c7c7 2px);
                         width: 100%;
                         height: 2px;
                     }
