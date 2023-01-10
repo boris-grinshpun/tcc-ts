@@ -14,7 +14,7 @@ export const Table: FC<TableFC> = ({card}) => {
         gender = "",
         characterLocation = "",
         dimension = " ",
-        appearances: populatiry = ""
+        appearances: popularity = ""
     } = card
     return (
         <div className="table-wrapper">
@@ -43,8 +43,8 @@ export const Table: FC<TableFC> = ({card}) => {
                     <div className="info">{gender}</div>
                 </div>
                 <div className="row">
-                    <div className="title">Populatity</div>
-                    <div className="info">{populatiry}</div>
+                    <div className="title">Popularity</div>
+                    <div className="info">{popularity}</div>
                 </div>
             </div>
         </div>

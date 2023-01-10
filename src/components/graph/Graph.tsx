@@ -41,7 +41,7 @@ export const ColumnGraph: FC<GraphFC> = ({data}) => {
     })
     return (
         <div className="wrapper" >
-            <div className="title">Populatiry Graph</div>
+            <div className="title">Popularity Graph</div>
             <div className="graph" >
                 <div className="x-graph-wrapper"  >
                     <div className="columns-wrapper" style={{ height: graphHeight + 'px' }}>
