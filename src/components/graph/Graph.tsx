@@ -1,5 +1,5 @@
 import './graph.scss'
-import { randomColor } from '../../utils'
+import { randomColor } from '../../shared-utils'
 import { FC } from 'react'
 
 interface Row {

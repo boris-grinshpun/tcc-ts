@@ -20,6 +20,6 @@ export function sortByKey(key: string) {
   return (a: Object, b: Object) => Object.values(a)[0][key] > Object.values(b)[0][key] ? 1 : -1
 }
 
-
 export const earthVal = "Earth (C-137)"
+
 export const graphCharacters = ["Abradolf Lincler", "Arcade Alien", "Morty Smith", "Birdperson", "Mr. Meeseeks"]

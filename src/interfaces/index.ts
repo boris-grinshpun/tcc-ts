@@ -38,6 +38,7 @@ export interface Location {
   export interface LocationData {
     dimension: string
   }
+
   export interface CharCard {
     name: string,
     appearances: number,
@@ -48,7 +49,6 @@ export interface Location {
     species: string,
     status: string,
   }
-  
   
   export interface Graph {
     name: string,
