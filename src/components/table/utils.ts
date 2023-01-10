@@ -1,14 +1,28 @@
-import { Character, CharacterAppearances, LocationData, CharCard, Location, Episode } from '../../interfaces'
-import { calcCharAppearanceInEpisodes, sortByKey, earthVal } from '../../shared-utils'
-import { getLocation, getCharactersFromIds } from '../../api'
+import { 
+  Character,
+  CharacterAppearances,
+  LocationData,
+  CharCard,
+  Location,
+  Episode 
+} from '../../interfaces'
+import {
+  calcCharAppearanceInEpisodes,
+  sortByKey,
+  earthVal 
+} from '../../shared-utils'
+import {
+  getLocation,
+  getCharactersFromIds
+} from '../../api'
 
 export async function prepTableData(
         earthCharacters: Character[],
         allLocations: Location[],
         charAppearanceInEpisodes: CharacterAppearances,
         allEpisodes: Episode[]
-    ): Promise<CharCard> {
-   let result:any
+    ): Promise<CharCard|any> {
+
     try {
       const earthLocation: any = allLocations.find((location: Location) => location.name === earthVal) ?? []
       const residentsIds: number[] = earthLocation?.residents.map((resident: String) => {
@@ -46,11 +60,17 @@ export async function prepTableData(
       }
 
       minAppearancesList.sort(sortByKey('appearances'))
+
       const minAppearances = Object.values(minAppearancesList[0])[0].appearances
-      const allMinAppearances = minAppearancesList.filter(item => Object.values(item)[0].appearances === minAppearances)
+
+      const allMinAppearances = minAppearancesList
+        .filter(item => Object.values(item)[0].appearances === minAppearances)
+
       allMinAppearances.sort(sortByKey('name'))
+
       const [characterId, characterCardInit]: [string, CharCard] = Object.entries(allMinAppearances[0])[0]
-      result = new Promise((resolve)=>{
+      
+      const result: Promise<CharCard> = new Promise((resolve)=>{
           getLocation(characterId)
             .then((data: LocationData) => {
               characterCardInit.dimension = data.dimension
@@ -59,7 +79,8 @@ export async function prepTableData(
     
       })
     } catch (err) {
-      console.log(err)
+      return new Promise((resolve, reject)=>{
+        reject(err)
+      })
     }
-    return result
   }
