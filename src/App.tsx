@@ -5,7 +5,6 @@ import { prepTableData } from './components/table/utils'
 import { prepGraphData } from './components/graph/utils'
 import { characterGetAll, locationGetAll, episodeGetAll } from './api'
 import { Character, CharacterAppearances, CharCard, Graph, Location, Episode } from './interfaces'
-import './App.scss'
 
 function App() {
   let allCharacters: Character[],
