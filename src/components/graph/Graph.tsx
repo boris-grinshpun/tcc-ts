@@ -2,15 +2,6 @@ import './graph.scss'
 import { getColor } from '../../utils/graph'
 import { FC } from 'react'
 
-interface Row {
-    totalAppearances: number,
-    name: string
-
-}
-interface GraphFC {
-    data: Row[]
-}
-
 export const ColumnGraph: FC<GraphFC> = ({data}) => {
     const graphHeight = 200
 

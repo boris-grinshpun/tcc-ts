@@ -1,10 +1,7 @@
-import './table.scss'
+import './card.scss'
 import { FC } from 'react'
-interface TableFC {
-    card: CharCard
-}
 
-export const Table: FC<TableFC> = ({card}) => {
+export const Card: FC<CardFC> = ({card}) => {
     const {
         name = "",
         image = "",

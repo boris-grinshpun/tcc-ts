@@ -65,3 +65,16 @@ interface Graph {
 interface Episode {
     characters: string[]
 }
+
+interface Row {
+    totalAppearances: number,
+    name: string
+
+}
+interface GraphFC {
+    data: Row[]
+}
+
+interface CardFC {
+    card: CharCard
+}

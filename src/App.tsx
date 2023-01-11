@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { ColumnGraph } from './components/graph/Graph'
-import { Table } from './components/table/Table'
-import { prepTableData } from './utils/table'
+import { Card } from './components/card/Card'
+import { prepTableData } from './utils/card'
 import { prepGraphData } from './utils/graph'
 import { characterGetAll, locationGetAll, episodeGetAll } from './api'
 
@@ -49,7 +49,7 @@ function App() {
   }, [])
   return (
     <div className="App">
-      <div><Table card={characterCard} /></div>
+      <div><Card card={characterCard} /></div>
       <br />
       <div><ColumnGraph data={graphData} /></div>
     </div>
