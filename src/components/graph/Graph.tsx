@@ -1,5 +1,5 @@
 import './graph.scss'
-import { getColor } from './utils'
+import { getColor } from '../../utils/graph'
 import { FC } from 'react'
 
 interface Row {

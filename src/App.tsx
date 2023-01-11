@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { ColumnGraph } from './components/graph/Graph'
 import { Table } from './components/table/Table'
-import { prepTableData } from './components/table/utils'
-import { prepGraphData } from './components/graph/utils'
+import { prepTableData } from './utils/table'
+import { prepGraphData } from './utils/graph'
 import { characterGetAll, locationGetAll, episodeGetAll } from './api'
 
 function App() {

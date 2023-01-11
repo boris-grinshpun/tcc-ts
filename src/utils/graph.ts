@@ -1,6 +1,6 @@
 import {
     calcCharAppearanceInEpisodes
-} from '../../shared-utils'
+} from './shared'
 
 const graphCharacters: string[] = ["Abradolf Lincler", "Arcade Alien", "Morty Smith", "Birdperson", "Mr. Meeseeks"]
 

@@ -2,11 +2,11 @@ import {
   calcCharAppearanceInEpisodes,
   sortByKey,
   earthVal 
-} from '../../shared-utils'
+} from './shared'
 import {
   getLocation,
   getCharactersFromIds
-} from '../../api'
+} from '../api'
 
 export async function prepTableData(
         earthCharacters: Character[],
