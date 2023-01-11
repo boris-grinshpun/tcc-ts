@@ -33,9 +33,7 @@ function App() {
         allLocations = data[1]
         allCharacters = data[2]
         prepTableData(
-          earthCharacters,
           allLocations,
-          charAppearanceInEpisodes,
           allEpisodes
         ).then((data: CharCard) => {
           setCharacterCard(data)

@@ -9,9 +9,7 @@ import {
 } from '../api'
 
 export async function prepTableData(
-        earthCharacters: Character[],
         allLocations: Location[],
-        charAppearanceInEpisodes: CharacterAppearances,
         allEpisodes: Episode[]
     ): Promise<CharCard> {
    let result: Promise<CharCard>
@@ -21,8 +19,8 @@ export async function prepTableData(
         return resident.substring(resident.lastIndexOf('/') + 1, resident.length).toString()
       })
 
-      earthCharacters = await getCharactersFromIds(residentsIds)
-      charAppearanceInEpisodes = earthCharacters.reduce((acc: any, character: any) => {
+      const earthCharacters: Character[] = await getCharactersFromIds(residentsIds)
+      let charAppearanceInEpisodes: CharacterAppearances = earthCharacters.reduce((acc: any, character: any) => {
         const {
           name,
           status,
