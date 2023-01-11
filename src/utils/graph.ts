@@ -10,8 +10,8 @@ export async function prepGraphData(
 ): Promise<Graph[]> {
     let result: Promise<Graph[]>
     try {
-        let graphCharactersData: CharNameIdsHash = allCharacters.reduce((acc: any, character: any) => {
-            let characterName = character.name
+        let graphCharactersData: CharNameIdsHash = allCharacters.reduce((acc: CharNameIdsHash, character: Character) => {
+            let characterName: string = character.name
             if (graphCharacters.includes(characterName)) {
                 if (!acc.hasOwnProperty(characterName)) {
                     acc[characterName] = { ids: [] }
@@ -21,20 +21,20 @@ export async function prepGraphData(
             return acc
         }, {})
 
-        let characterAppearance: CharacterAppearances = Object.values(graphCharactersData)
-            .reduce((acc: any, character: any) => {
-                let appearanceById = character.ids.reduce((acc: any, id: Number) => {
+        let characterAppearance: GraphCharacterAppearances = Object.values(graphCharactersData)
+            .reduce((acc: GraphCharacterAppearances, {ids}) => {
+                let appearanceById = ids.reduce((acc: GraphCharacterAppearances, id: number) => {
                     acc[id.toString()] = { appearances: 0 }
                     return acc
                 }, {})
                 return { ...acc, ...appearanceById }
-            }, [])
-
-        characterAppearance = calcCharAppearanceInEpisodes(characterAppearance, allEpisodes)
+            }, {})
+            console.log(characterAppearance)
+        calcCharAppearanceInEpisodes(characterAppearance, allEpisodes)
         const prepGraphData: Graph[] = []
 
         for (const [name, { ids }] of Object.entries(graphCharactersData)) {
-            const totalAppearances: number = ids.reduce((acc: any, id: any) => {
+            const totalAppearances: number = ids.reduce((acc: number, id: number) => {
 
                 acc += characterAppearance[id.toString()].appearances
                 return acc

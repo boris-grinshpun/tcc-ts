@@ -1,7 +1,10 @@
-export function calcCharAppearanceInEpisodes(charAppearanceInEpisodes: CharacterAppearances, allEpisodes: Episode[]) {
-  return allEpisodes.reduce((acc: CharacterAppearances, episode: Episode) => {
-    episode.characters.forEach((character: string) => {
-      const characterId: string = character.substring(character.lastIndexOf('/') + 1, character.length).toString()
+export function calcCharAppearanceInEpisodes(
+  charAppearanceInEpisodes: CharacterAppearances|GraphCharacterAppearances,
+  allEpisodes: Episode[]
+): CharacterAppearances|GraphCharacterAppearances {
+  return allEpisodes.reduce((acc: CharacterAppearances|GraphCharacterAppearances, episode: Episode) => {
+    episode.characters.forEach((characterUrl: string) => {
+      const characterId: string = characterUrl.substring(characterUrl.lastIndexOf('/') + 1, characterUrl.length).toString()
       if (charAppearanceInEpisodes.hasOwnProperty(characterId)) {
         charAppearanceInEpisodes[characterId].appearances += 1
       }

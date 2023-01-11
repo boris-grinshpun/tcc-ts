@@ -14,13 +14,15 @@ export async function prepTableData(
     ): Promise<CharCard> {
    let result: Promise<CharCard>
     try {
-      const earthLocation: any = allLocations.find((location: Location) => location.name === earthVal) ?? []
-      const residentsIds: number[] = earthLocation?.residents.map((resident: String) => {
+      const earthLocation: Location|undefined = allLocations.find((location: Location) => location.name === earthVal)
+      if (earthLocation === undefined)
+        throw 'earth not found'
+      const residentsIds: string[] = earthLocation?.residents.map((resident: string) => {
         return resident.substring(resident.lastIndexOf('/') + 1, resident.length).toString()
       })
 
       const earthCharacters: Character[] = await getCharactersFromIds(residentsIds)
-      let charAppearanceInEpisodes: CharacterAppearances = earthCharacters.reduce((acc: any, character: any) => {
+      let charAppearanceInEpisodes: CharacterAppearances = earthCharacters.reduce((acc: CharacterAppearances, character: Character) => {
         const {
           name,
           status,
@@ -42,7 +44,7 @@ export async function prepTableData(
         return acc
       }, {})
 
-      charAppearanceInEpisodes = calcCharAppearanceInEpisodes(charAppearanceInEpisodes, allEpisodes)
+      calcCharAppearanceInEpisodes(charAppearanceInEpisodes, allEpisodes)
 
       let minAppearancesList: CharacterAppearances[] = []
       for (let id in charAppearanceInEpisodes) {
@@ -51,10 +53,10 @@ export async function prepTableData(
 
       minAppearancesList.sort(sortByKey('appearances'))
 
-      const minAppearances = Object.values(minAppearancesList[0])[0].appearances
+      const minAppearancesValue = Object.values(minAppearancesList[0])[0].appearances
 
       const allMinAppearances = minAppearancesList
-        .filter(item => Object.values(item)[0].appearances === minAppearances)
+        .filter(item => Object.values(item)[0].appearances === minAppearancesValue)
 
       allMinAppearances.sort(sortByKey('name'))
 

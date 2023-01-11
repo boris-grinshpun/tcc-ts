@@ -17,7 +17,7 @@ export function getLocation(id: string) {
     return fetch(`${LOCATION_API_URL}/${id}`).then(data=> data.json())
 }
 
-export function getCharactersFromIds(list:number[] = []){
+export function getCharactersFromIds(list: number[]|string[] = []){
     if (list.length){
         return fetch(`${CHARACTER_API_URL}/${list.join(",")}`).then(data=>data.json())
     }

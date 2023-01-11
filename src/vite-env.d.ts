@@ -1,11 +1,11 @@
 /// <reference types="vite/client" />
 
- interface Location {
+interface Location {
     name: string,
     residents: string[]
-  }
-  
- interface Character {
+}
+
+interface Character {
     id: number,
     name: string,
     status: string,
@@ -13,34 +13,40 @@
     gender: string,
     image: string,
     location: {
-      name: string
+        name: string
     }
-  }
-  
- interface CharacterAppearances {
+}
+
+interface CharacterAppearances {
     [id: string]: {
-      appearances: number,
-      name: string,
-      characterLocation: string,
-      dimension: string,
-      status: string,
-      species: string,
-      gender: string,
-      image: string
+        appearances: number,
+        name: string,
+        characterLocation: string,
+        dimension: string,
+        status: string,
+        species: string,
+        gender: string,
+        image: string
     }
-  }
+}
+
+interface GraphCharacterAppearances {
+    [id: string]: {
+        appearances: number
+    }
+}
   
  interface CharNameIdsHash {
-    [name: string] : {
-      ids: [],
+    [name: string]: {
+        ids: number[],
     }
-  }
-  
- interface LocationData {
-    dimension: string
-  }
+}
 
- interface CharCard {
+interface LocationData {
+    dimension: string
+}
+
+interface CharCard {
     name: string,
     appearances: number,
     characterLocation: string,
@@ -49,13 +55,13 @@
     image: string,
     species: string,
     status: string,
-  }
-  
- interface Graph {
+}
+
+interface Graph {
     name: string,
     totalAppearances: number
-  }
+}
 
- interface Episode {
+interface Episode {
     characters: string[]
-  }
+}
