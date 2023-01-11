@@ -1,4 +1,4 @@
-export function calcCharAppearanceInEpisodes(
+export function updateCharacterAppearanceInEpisodes(
   charAppearanceInEpisodes: CharacterAppearances|GraphCharacterAppearances,
   allEpisodes: Episode[]
 ): CharacterAppearances|GraphCharacterAppearances {

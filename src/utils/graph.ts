@@ -1,5 +1,5 @@
 import {
-    calcCharAppearanceInEpisodes
+    updateCharacterAppearanceInEpisodes
 } from './shared'
 
 const graphCharacters: string[] = ["Abradolf Lincler", "Arcade Alien", "Morty Smith", "Birdperson", "Mr. Meeseeks"]
@@ -29,8 +29,7 @@ export async function prepGraphData(
                 }, {})
                 return { ...acc, ...appearanceById }
             }, {})
-            console.log(characterAppearance)
-        calcCharAppearanceInEpisodes(characterAppearance, allEpisodes)
+        updateCharacterAppearanceInEpisodes(characterAppearance, allEpisodes)
         const prepGraphData: Graph[] = []
 
         for (const [name, { ids }] of Object.entries(graphCharactersData)) {

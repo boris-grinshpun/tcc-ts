@@ -1,5 +1,5 @@
 import {
-  calcCharAppearanceInEpisodes,
+  updateCharacterAppearanceInEpisodes,
   sortByKey,
   earthVal 
 } from './shared'
@@ -44,7 +44,7 @@ export async function prepTableData(
         return acc
       }, {})
 
-      calcCharAppearanceInEpisodes(charAppearanceInEpisodes, allEpisodes)
+      updateCharacterAppearanceInEpisodes(charAppearanceInEpisodes, allEpisodes)
 
       let minAppearancesList: CharacterAppearances[] = []
       for (let id in charAppearanceInEpisodes) {
