@@ -3,11 +3,16 @@ import { getColor } from '../../utils/graph'
 import { FC } from 'react'
 
 export const ColumnGraph: FC<GraphFC> = ({data}) => {
-    const graphHeight = 200
-
+    const graphHeight = 224
+    const maxColumnHeigth = 200
+    const yLegendDivider = 5
+    if (!data.length)
+    return (
+        <></>
+    )
     const maxValue: number = Math.max(...data.map(row => row.totalAppearances))
-    const numRecords = data.length
-    const portion = numRecords ? Math.ceil(maxValue / numRecords) : 1
+    const numRecords = maxValue < yLegendDivider ? maxValue : yLegendDivider
+    const portion = Math.ceil(maxValue / numRecords)
 
     const range = Array.from(Array(numRecords + 1).keys()).map(num => portion * num).sort((a, b) => b - a)
 
@@ -21,7 +26,7 @@ export const ColumnGraph: FC<GraphFC> = ({data}) => {
     })
 
     const graphColumns = data.map((row, index) => {
-        const columnHeight = Math.floor((row.totalAppearances * graphHeight) / maxValue)
+        const columnHeight = Math.floor((row.totalAppearances * maxColumnHeigth) / maxValue)
         return (
             <div className='x-legend-wrapper' key={index + row.name}>
                 <div className="column" style={{ height: columnHeight + 'px', backgroundColor: getColor(index) }}>
@@ -39,7 +44,7 @@ export const ColumnGraph: FC<GraphFC> = ({data}) => {
                         {graphColumns}
                     </div>
                 </div>
-                <div className="y-graph-wrapper" style={{ height: (graphHeight + 30) + 'px' }}>
+                <div className="y-graph-wrapper" style={{ height: graphHeight + 'px' }}>
                     <div className="y-legend-wrapper">
                         {yLegend}
                     </div>
