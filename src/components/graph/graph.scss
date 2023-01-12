@@ -45,6 +45,7 @@
                     }
                     &:last-child .line{
                         height: 1px;
+                        z-index: 1;
                         background: repeating-linear-gradient(to top, black, black 2px);
                     }
                 }
