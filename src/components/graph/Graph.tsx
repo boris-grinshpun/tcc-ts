@@ -3,16 +3,16 @@ import { getColor } from '../../utils/graph'
 import { FC } from 'react'
 
 export const ColumnGraph: FC<GraphFC> = ({data}) => {
-    const graphHeight = 224
-    const maxColumnHeigth = 200
-    const yLegendDivider = 5
+    const graphHeight: number = 224
+    const maxColumnHeigth: number = 200
+    const yLegendDivider: number = 5
     if (!data.length)
     return (
         <></>
     )
     const maxValue: number = Math.max(...data.map(row => row.totalAppearances))
-    const numRecords = maxValue < yLegendDivider ? maxValue : yLegendDivider
-    const portion = Math.ceil(maxValue / numRecords)
+    const numRecords: number = maxValue < yLegendDivider ? maxValue : yLegendDivider
+    const portion: number = Math.ceil(maxValue / numRecords)
 
     const range = Array.from(Array(numRecords + 1).keys()).map(num => portion * num).sort((a, b) => b - a)
 
