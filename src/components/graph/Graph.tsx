@@ -12,9 +12,9 @@ export const ColumnGraph: FC<GraphFC> = ({data}) => {
     )
     const maxValue: number = Math.max(...data.map(row => row.totalAppearances))
     const numRecords: number = maxValue < yLegendDivider ? maxValue : yLegendDivider
-    const portion: number = Math.ceil(maxValue / numRecords)
+    const portion: number = maxValue / numRecords
 
-    const range = Array.from(Array(numRecords + 1).keys()).map(num => portion * num).sort((a, b) => b - a)
+    const range = Array.from(Array(numRecords + 1).keys()).map(num => Math.floor(portion * num)).sort((a, b) => b - a)
 
     const yLegend = range.map((num, index) => {
         return (
